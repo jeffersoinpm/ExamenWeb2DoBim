@@ -2,22 +2,23 @@ import {ArgumentMetadata, Injectable, PipeTransform} from "@nestjs/common";
 import {PeticionIncorrectaException} from "../exceptions/peticion-incorrecta.exception";
 import * as Joi from 'joi';
 @Injectable()
-export class MedicamentoPipe implements PipeTransform{
+export class EquipoFutbolPipe implements PipeTransform{
     constructor (private readonly _schema){
     }
-    transform(jsonValidarMedicamento: any, metadata: ArgumentMetadata){
-        const  {error}= Joi.validate(jsonValidarMedicamento, this._schema)
+
+    transform(jsonValidarEquipoFutbol: any, metadata: ArgumentMetadata){
+        const  {error}= Joi.validate(jsonValidarEquipoFutbol, this._schema);
         if(error){
-            //botar un error
             throw  new PeticionIncorrectaException(
                 {
                     erorr: error,
-                    mensaje: 'Json de Medicamento no valido',
+                    mensaje: 'Json de Equipo de Futbol no valido',
                 },
                 10
             )
-        } else{
-            return jsonValidarMedicamento;
+        }else{
+            return jsonValidarEquipoFutbol;
         }
+
     }
 }

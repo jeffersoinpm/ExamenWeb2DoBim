@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-medicamento',
-  templateUrl: './medicamento.component.html',
-  styleUrls: ['./medicamento.component.css']
+  selector: 'app-jugador',
+  templateUrl: './jugador.component.html',
+  styleUrls: ['./jugador.component.css']
 })
-export class MedicamentoComponent implements OnInit {
+export class JugadorComponent implements OnInit {
 
   @Input() imagen: string;
   @Input() texto: string;

@@ -1,10 +1,9 @@
 import {Body, Controller, Get, HttpStatus, Param, Post, Req, Res} from "@nestjs/common";
 import {Usuario, UsuarioService} from "./usuario.service";
-import {PacientePipe} from "../pipes/paciente.pipe";
-import {PACIENTE_SCHEMA} from "../paciente/paciente.schema";
+import {EquipoFutbolPipe} from "../pipes/equipo-futbol-pipe.service";
+import {EQUIPO_FUTBOL_SCHEMA} from "../equipo_futbol/equipo_futbol.schema";
 import {UsuarioPipe} from "../pipes/usuario.pipe";
 import {USUARIO_SCHEMA} from "./usuario.schema";
-import {Paciente} from "../paciente/paciente.service";
 
 @Controller('Usuario')
 export class UsuarioController {
@@ -38,7 +37,8 @@ export class UsuarioController {
     registrarUsuario(@Body(new UsuarioPipe(USUARIO_SCHEMA)) bodyParams, @Res () response){
         const usuario = new Usuario(
             bodyParams.nombre_usuario,
-            bodyParams.password_usuario
+            bodyParams.password_usuario,
+            bodyParams.img_usuario,
         );
         this.usuarioService.crearUsuario(usuario);
         return response.send('Usuario Registrado');

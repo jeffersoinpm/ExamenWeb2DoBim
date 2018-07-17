@@ -14,7 +14,7 @@
             <i class="icon ion-md-search"></i>
           </div>
           <div class="col-sm-6">
-            <input class="form-control" type="search" placeholder="Buscar Usuario/Papa/Hijo" aria-label="Search" [(ngModel)]="userLike" name="userLike">
+            <input class="form-control" type="search" placeholder="Buscar Usuario/Equiposfutbol/Jugadores" aria-label="Search" [(ngModel)]="userLike" name="userLike">
           </div>
           <div class="col-sm-3">
             <button class="btn" type="submit" (click)="ngOnInit()">
@@ -36,8 +36,8 @@
   <div class="col-sm-2" *ngFor="let user of usuarioAux ; let indice=index">
     <div *ngIf="indice<=3">
         <app-usuario
-          [texto]="user.id_usuario + ' ' + user.nombres"
-          [imagen]="user.imagen"
+          [texto]="user.id_usuario + ' ' + user.nombre_usuario"
+          [imagen]="user.img_usuario"
         >
         </app-usuario>
     <div class="col-sm-1"></div>
@@ -61,20 +61,19 @@
 
 </div>
 
-
 <div class="row">
-  <div class="col-sm-1" text-aling="center"><h2>PACIENTES</h2></div>
+  <div class="col-sm-1" text-aling="center"><h2>Equipos De Fútbol</h2></div>
 </div>
 
 <div class="row">
   <div class="col-sm-1"></div>
-  <div class="col-sm-4" *ngFor="let pac of pacienteAux ; let indice=index">
+  <div class="col-sm-4" *ngFor="let pac of equiposFutbolAux ; let indice=index">
     <div *ngIf="indice<=1">
-      <app-paciente
-        [texto]="pac.id_paciente +  ' ' + pac.nombrePa + ' ' + pac.apellidos"
-        [imagen]="pac.imagen"
+      <app-equipofutbol
+        [texto]="pac.id_equipo_futbol +  ' ' + pac.nombres + ' ' + pac.liga"
+        [imagen]="pac.img_equipo_futbol"
       >
-      </app-paciente>
+      </app-equipofutbol>
       <div class="col-sm-1"></div>
     </div>
   </div>
@@ -98,18 +97,18 @@
 
 
 <div class="row">
-  <div class="col-sm-1" text-aling="center"><h2>MEDICAMENTOS</h2></div>
+  <div class="col-sm-1" text-aling="center"><h2>JUGADORES</h2></div>
 </div>
 
 <div class="row">
   <div class="col-sm-1"></div>
-  <div class="col-sm-2" *ngFor="let med of medicamentoAux ; let indice=index">
+  <div class="col-sm-2" *ngFor="let med of jugadoresAux ; let indice=index">
     <div *ngIf="indice<=3">
-      <app-medicamento
-        [texto]="med.nombre + ' ' + med.composicion"
-        [imagen]="med.imagen"
+      <app-jugador
+        [texto]="med.nombreCamiseta + ' ' + med.nombreCompletoJugador"
+        [imagen]="med.img_jug"
       >
-      </app-medicamento>
+      </app-jugador>
       <div class="col-sm-1"></div>
     </div>
   </div>

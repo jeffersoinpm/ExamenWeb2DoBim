@@ -1,42 +1,37 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {PacienteController} from "./paciente/paciente.controller";
-import {MedicamentoController} from "./medicamentos/medicamento.controller";
+import {Equipo_futbolController} from "./equipo_futbol/equipo_futbol.controller";
+import {JugadorController} from "./jugadores/jugadorController";
 import {AutorizacionController} from "./controladores/autorizacion.controller";
-import {PacienteService} from "./paciente/paciente.service";
-import {MedicamentoService} from "./medicamentos/medicamento.service";
+import {Equipo_FutbolService} from "./equipo_futbol/equipo_futbol_service.component";
+import {JugadorService} from "./jugadores/jugador-service.component";
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {PacienteEntity} from "./paciente/paciente.entity";
+import {Equipo_futbolEntity} from "./equipo_futbol/equipo_futbolEntity";
 import {UsuarioEntity} from "./usuario/usuario.entity";
-import {MedicamentoEntity} from "./medicamentos/medicamento.entity";
+import {JugadorEntity} from "./jugadores/jugadorEntity";
 import {UsuarioService} from "./usuario/usuario.service";
 import {UsuarioController} from "./usuario/usuario.controller";
 
 @Module({
   imports: [TypeOrmModule.forRoot({
         type: 'mysql',
-        host: 'web2018aexamen.mysql.database.azure.com',
+        host: 'localhost',
         port: 3306,
-        username: 'KevinDB@web2018aexamen',
-        password: 'Web2018A',
-        database: 'WebExamen',
+        username: 'root',
+        password: 'root',
+        database: 'examenweb',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
         ssl: true
       }),
-
-      /*TypeOrmModule.forFeature([UsuarioEntity,], 'userConnection'),
-      TypeOrmModule.forFeature([PacienteEntity,],'patientConnection'),
-      TypeOrmModule.forFeature([MedicamentoEntity,],'medicineConnection'),
-       */
       TypeOrmModule.forFeature([
-          PacienteEntity,
+          Equipo_futbolEntity,
           UsuarioEntity,
-          MedicamentoEntity,
+          JugadorEntity,
       ]),
   ],
-  controllers: [AppController, PacienteController, MedicamentoController, AutorizacionController, UsuarioController],
-  providers: [AppService, PacienteService, MedicamentoService, UsuarioService],
+  controllers: [AppController, Equipo_futbolController, JugadorController, AutorizacionController, UsuarioController],
+  providers: [AppService, Equipo_FutbolService, JugadorService, UsuarioService],
 })
 export class AppModule {}

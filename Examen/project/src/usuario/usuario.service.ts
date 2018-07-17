@@ -3,7 +3,7 @@ import {InjectConnection, InjectEntityManager, InjectRepository} from "@nestjs/t
 import {Connection, EntityManager, Equal, getRepository, Like, Repository} from "typeorm";
 import {UsuarioEntity} from "./usuario.entity";
 import {UsuarioData} from "./usuario.data";
-import {Paciente} from "../paciente/paciente.service";
+import {Equipo_FutbolService} from "../equipo_futbol/equipo_futbol_service.component";
 
 @Component()
 export class UsuarioService {
@@ -26,6 +26,7 @@ export class UsuarioService {
         const user = new UsuarioEntity();
         user.nombre_usuario = usuario.nombre;
         user.password_usuario = usuario.password;
+        user.img_usuario = usuario.img;
         //this.connection.manager.save(user);
         this.usuarioRepository.save(user);
     }
@@ -37,6 +38,7 @@ export class UsuarioService {
             //console.log(usuario+"  "+UsuarioData[usuario].nombre_usuario+"  "+UsuarioData[usuario].password_usuario);
             user.nombre_usuario = UsuarioData[indice].nombre_usuario;
             user.password_usuario = UsuarioData[indice].password_usuario;
+            user.img_usuario = UsuarioData[indice].img_usuario;
             this.usuarioRepository.save(user);
             //console.log(user.nombre_usuario + '  ' + user.password_usuario);
             //this.connection.manager.save(user);
@@ -61,6 +63,7 @@ export class Usuario {
     constructor(
         public nombre:string,
         public password:string,
+        public img:string
     ){};
 
 }

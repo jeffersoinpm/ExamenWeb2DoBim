@@ -1,5 +1,5 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {PacienteEntity} from "../paciente/paciente.entity";
+import {Equipo_futbolEntity} from "../equipo_futbol/equipo_futbolEntity";
 
 @Entity('usuario')
 export class UsuarioEntity {
@@ -9,11 +9,13 @@ export class UsuarioEntity {
     nombre_usuario: string;
     @Column()
     password_usuario: string;
+    @Column()
+    img_usuario: string;
 
     @OneToMany(
-        type => PacienteEntity,
+        type => Equipo_futbolEntity,
         usuarioEntity => usuarioEntity.usuarioFK)
-    pacienteId: number;
+    equiposfutbol: Equipo_futbolEntity[];
 
 
 }

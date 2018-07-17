@@ -12,8 +12,11 @@ import { PeticionComponent } from './peticion/peticion.component';
 import { HomeComponent } from './home/home.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import {HttpModule} from "@angular/http";
-import { PacienteComponent } from './paciente/paciente.component';
-import { MedicamentoComponent } from './medicamento/medicamento.component';
+import { EquipoFutbolComponent } from './equipofutbol/equipo-futbol.component';
+import { JugadorComponent } from './jugador/jugador.component';
+import {JugadorService} from "./servicios/jugador.service";
+import {UsuarioService} from "./servicios/usuario.service";
+import {EquipoFutbolService} from "./servicios/equipo-futbol.service";
 
 
 @NgModule({
@@ -25,8 +28,8 @@ import { MedicamentoComponent } from './medicamento/medicamento.component';
     PeticionComponent,
     HomeComponent,
     UsuarioComponent,
-    PacienteComponent,
-    MedicamentoComponent,
+    EquipoFutbolComponent,
+    JugadorComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { MedicamentoComponent } from './medicamento/medicamento.component';
       }
     )
   ],
-  providers: [HomeComponent],
+  providers: [HomeComponent, JugadorService, UsuarioService, EquipoFutbolService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
